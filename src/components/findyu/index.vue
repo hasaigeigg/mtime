@@ -3,63 +3,114 @@
     <div class="newpic">
       <a>
         <img
-          :src="Yutitle.coverImg"
+          src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F07%2F222226.52600905.jpg&width=640&height=360&clipType=3"
           alt
         />
         <h2>
-          <b>{{Yutitle.movieName}}</b>
+          <b>灵魂 先导中文预告</b>
         </h2>
         <i class="index-radio"></i>
       </a>
     </div>
     <div class="newlist">
       <ul>
-        <li class="xiaotu-list" v-for="(item,index) in Yucontent" :key="index">
+        <li class="xiaotu-list">
           <div class="table">
-            <div class="table_lists-pic-yu">
+            <div class="table_lists-pic">
               <i class="index-radio"></i>
               <img
-                class="img_box-yu"
-                :src="item.coverImg"
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
                 alt
               />
             </div>
             <div class="table-text">
-              <h2>{{item.movieName}}</h2>
+              <h2>新版"隐形人"首曝预告..</h2>
             </div>
           </div>
         </li>
-        
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>新版"隐形人"首曝预告..</h2>
+            </div>
+          </div>
+        </li>
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>新版"隐形人"首曝预告..</h2>
+            </div>
+          </div>
+        </li>
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>新版"隐形人"首曝预告..</h2>
+            </div>
+          </div>
+        </li>
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>新版"隐形人"首曝预告..</h2>
+            </div>
+          </div>
+        </li>
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F08%2F082300.81870494.jpg&width=250&height=150&clipType=4"
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>新版"隐形人"首曝预告..</h2>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { findyugaocontentApi } from "@api/find";
-export default {
-  name: "Yu",
-  data(){
-    return{
-      Yutitle:{},
-      Yucontent:[]
-    }
-  },
-  computed: {
-    ...mapState({
-      // Findtrailer: state => state.find.Findtrailer   无用,预告顶部真实在content中
-    })
-  },
-   async created() {
-    let data = await findyugaocontentApi();
-    this.Yutitle = data.data.trailers.shift(0);
-    console.log(this.Yutitle);
-    this.Yucontent = data.data.trailers;
-    console.log(this.Yucontent);
-
-  }
-};
+export default {};
 </script>
 
 <style>
@@ -110,7 +161,6 @@ export default {
 }
 
 .table-text {
-  width: 1.725rem;
   padding-right: 0.15rem;
   padding-left: 0.15rem;
 }
@@ -121,13 +171,13 @@ export default {
   display: block;
 }
 
-.table_lists-pic-yu {
+.table_lists-pic {
   width: 1.25rem;
-  height: .75rem;
+  height: 0.75rem;
   position: relative;
 }
 
-.img_box-yu {
+.img_box {
   border: 1px solid #ddd;
   width: 100%;
   height: 100%;

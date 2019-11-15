@@ -13,8 +13,18 @@
 </template>
 
 <script>
+import MessageBox from "../../lib/messageBox/index.js"
 export default {
   name: "Shopsou",
+  created(){
+    MessageBox({
+      title:"城市定位",
+      content:"北京",
+      ok:()=>{
+        alert(1)
+      }
+    });
+  }
 };
 </script>
 

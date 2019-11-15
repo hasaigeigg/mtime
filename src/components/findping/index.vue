@@ -5,37 +5,121 @@
       <img class="m_img" src alt />
       <div class="smallpic">
         <img
-          :src="Findreview.posterUrl"
+          src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmt%2F2019%2F10%2F22%2F153005.80455148_1280X720X2.jpg&width=125&height=190&clipType=4"
           alt
           class="m_img"
         />
       </div>
       <h2>
-        <b>{{Findreview.movieName}}</b>
+        <b>少年的你</b>
         <span>
-          <i class="i-book"></i> {{Findreview.title}}
+          <i class="i-book"></i> 曾经的少年，如今的你！
         </span>
       </h2>
     </div>
 
     <ul class="reviewList">
-      <li v-for="(item,index) in PingContent" :key="index" :data-id="item.id">
-        <h2>{{item.title}}</h2>
+      <li>
+        <h2>曾经的少年，如今的你！</h2>
         <a>
           <i class="usepic">
             <img
               class="m_img"
-              :src="item.userImage"
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fup%2F2017%2F01%2F16%2F225135.12450505_128X128.jpg&width=40&height=40&clipType="
               alt
             />
           </i>
           <span>
-            {{item.nickname}}-评分
+            小蔺先森-评分
             <b>
-              <strong>{{item.title}}</strong>
+              <strong>《少年的你》</strong>
             </b>
             <em class="m_score">
-              <i>{{item.rating}}</i>
+              <i>8.2</i>
+            </em>
+          </span>
+        </a>
+      </li>
+      <li>
+        <h2>曾经的少年，如今的你！</h2>
+        <a>
+          <i class="usepic">
+            <img
+              class="m_img"
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fup%2F2017%2F01%2F16%2F225135.12450505_128X128.jpg&width=40&height=40&clipType="
+              alt
+            />
+          </i>
+          <span>
+            小蔺先森-评分
+            <b>
+              <strong>《少年的你》</strong>
+            </b>
+            <em class="m_score">
+              <i>8.2</i>
+            </em>
+          </span>
+        </a>
+      </li>
+      <li>
+        <h2>曾经的少年，如今的你！</h2>
+        <a>
+          <i class="usepic">
+            <img
+              class="m_img"
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fup%2F2017%2F01%2F16%2F225135.12450505_128X128.jpg&width=40&height=40&clipType="
+              alt
+            />
+          </i>
+          <span>
+            小蔺先森-评分
+            <b>
+              <strong>《少年的你》</strong>
+            </b>
+            <em class="m_score">
+              <i>8.2</i>
+            </em>
+          </span>
+        </a>
+      </li>
+      <li>
+        <h2>曾经的少年，如今的你！</h2>
+        <a>
+          <i class="usepic">
+            <img
+              class="m_img"
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fup%2F2017%2F01%2F16%2F225135.12450505_128X128.jpg&width=40&height=40&clipType="
+              alt
+            />
+          </i>
+          <span>
+            小蔺先森-评分
+            <b>
+              <strong>《少年的你》</strong>
+            </b>
+            <em class="m_score">
+              <i>8.2</i>
+            </em>
+          </span>
+        </a>
+      </li>
+      <li>
+        <h2>曾经的少年，如今的你！</h2>
+        <a>
+          <i class="usepic">
+            <img
+              class="m_img"
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fup%2F2017%2F01%2F16%2F225135.12450505_128X128.jpg&width=40&height=40&clipType="
+              alt
+            />
+          </i>
+          <span>
+            小蔺先森-评分
+            <b>
+              <strong>《少年的你》</strong>
+            </b>
+            <em class="m_score">
+              <i>8.2</i>
             </em>
           </span>
         </a>
@@ -45,26 +129,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { findyingcontentApi } from "@api/find";;
-export default {
-  name:"Ping",
-   data(){
-    return{
-      PingContent:[]
-    }
-  },
-  computed: {
-    ...mapState({
-      Findreview: state => state.find.Findreview
-    })
-  },
-  async created() {
-    let data = await findyingcontentApi();
-    this.PingContent = data;
-  },
- 
-};
+export default {};
 </script>
 
 <style>

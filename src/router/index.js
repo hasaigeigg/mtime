@@ -4,7 +4,7 @@ import home from './home';
 import find from './find';
 import shopping from './shopping';
 import ticket from './ticket';
-import mine from './mine';
+import shopmowan from './shopmowan';
 
 Vue.use(VueRouter);
 
@@ -19,7 +19,17 @@ const router = new VueRouter({
         find,
         shopping,
         ticket,
-        mine,
+        shopmowan,
+        {
+            path:"/mine",
+            name:"mine",
+            component:_=>import("@pages/mine"),
+            meta:{
+                flag:false,
+                requireAuth:false,
+                Tab:true
+            }
+        },
         {
             path:'/sou',
             name:'sou',
@@ -29,16 +39,31 @@ const router = new VueRouter({
             }
         },
         {
-            path:'/city',
-            name:'city',
-            component:_=>import("@pages/city"),
+            path:'/shopsou',
+            name:'shopsou',
+            component:_=>import("@pages/shopsou"),
+            meta:{
+                Tab:true
+            }
         },
         {
-            path:'/detailmovie/:id',
-            name:'detailmovie',
-            component:_=>import("@pages/detailsmovie"),
-            props:true
-        }
+            path:'/shopdetail/:goodsId',
+            name:'shopdetail',
+            component:_=>import("@pages/shopdetail"),
+            props:true,
+            meta:{
+                Tab:false
+            }
+        },
+        {
+            path:'/cart',
+            name:'cart',
+            component:_=>import("@pages/cart"),
+            meta:{
+                Tab:false
+            }
+        },
+        
     ]
 })
 

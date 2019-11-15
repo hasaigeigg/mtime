@@ -1,16 +1,15 @@
 <template>
-  <section class="index_section">
-    <div>
-      <header class="sou-header">
-        <nav class="sou-nav">
-          <router-link tag="a" to="/" class="sou-btn"></router-link>
-          <input v-model="value" type="text" placeholder="影片/影院/影人，任你搜" />
-          <a class="sou-box">
-            <span>搜索</span>
-          </a>
-        </nav>
-      </header>
-      <div v-if="value.length == 0" class="sou-tao">
+  <div>
+    <header class="sou-header">
+      <nav class="sou-nav">
+        <router-link tag="a" to="/"  class="sou-btn"></router-link>
+        <input type="text" placeholder="影片/影院/影人，任你搜" />
+        <a class="sou-box">
+          <span>搜索</span>
+        </a>
+      </nav>
+    </header>
+      <div class="sou-tao">
         <div class="sou-xx">
           <p>
             <b>42,560</b>
@@ -23,81 +22,37 @@
           <b>热门搜索</b>
         </div>
         <div class="serch">
-          <a v-for="(item,index) in hotList" :key="index">
-            <span>{{item}}</span>
+          <a>
+            <span>终结者</span>
+          </a>
+          <a>
+            <span>少年的你</span>
+          </a>
+          <a>
+            <span>决战中途岛</span>
+          </a>
+          <a>
+            <span>沉睡魔咒2</span>
+          </a>
+          <a>
+            <span>受益人</span>
+          </a>
+          <a>
+            <span>我和我的祖国</span>
           </a>
         </div>
       </div>
-      <div v-if="value.length > 0" class="sou-libiao">
-        <ul>
-          <li v-for="(item,index) in list" :key="index">
-            <div class="sou-pic">
-              <img :src="item.cover" />
-            </div>
-            <dl class="sou-td">
-              <dt>
-                <strong>{{item.titlecn}} ({{item.year}})</strong>
-                <span>[{{item.contentType}}]</span>
-              </dt>
-              <dd class="sou-tip">
-                <span>{{item.titleen}}</span>
-              </dd>
-              <dd>
-                <span>{{item.movieType}}, {{item.locationName}}</span>
-              </dd>
-            </dl>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
+
+  </div>
 </template>
 
 <script>
-import {throttle} from '@utils/throttle';
-import {SoumovieApi,SoumoviehotApi} from '@api/sou';
-console.log(throttle);
 export default {
-  name: "Sou",
-  data(){
-    return {
-      value:"",
-      list:[],
-      hotList:[]
-    }
-  },
-  watch:{
-    value(newVal){
-
-      throttle (async ()=>{
-        let data = await SoumovieApi(newVal,this.$store.state.city.cityId);
-        // console.log(111);
-        this.list = data.suggestions ? data.suggestions:[];
-      })
-
-      
-    }
-  },
-  async created(){
-    let data = await SoumoviehotApi();
-    this.hotList = data.keywords;
-    console.log(this.hotList)
-  }
+  name: "Sou"
 };
 </script>
 
 <style>
-.index_section {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-  padding-top: 0.43rem;
-}
 .sou-header {
   height: 0.44rem;
   background: #1c2635;
@@ -153,6 +108,8 @@ export default {
   border-radius: 0.042rem;
 }
 
+
+
 .sou-xx {
   padding: 0.14rem 0 0.15rem 0.05rem;
   max-height: 0.95rem;
@@ -207,49 +164,5 @@ export default {
 
 .serch a span {
   font-size: 0.125rem;
-}
-.sou-libiao ul {
-  margin-left: 0.15rem;
-}
-.sou-libiao ul li {
-  border-bottom: 1px solid #d8d8d8;
-  padding: 0.15rem 0;
-}
-.sou-pic {
-  width: 0.35rem;
-  height: 0.517rem;
-  overflow: hidden;
-}
-.sou-pic img {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ddd;
-}
-
-.sou-td {
-  margin-left: 0.15rem;
-}
-.sou-td dt strong {
-  font-size: 0.167rem;
-  padding-right: 0.044rem;
-  vertical-align: middle;
-}
-.sou-td dt span {
-  vertical-align: middle;
-  font-weight: normal;
-  color: #999;
-  font-size: 0.108rem;
-}
-.sou-tip {
-  color: #999;
-}
-.sou-tip span {
-  font-size: 0.1rem;
-}
-.sou-td dd span {
-  font-size: 0.1rem;
-}
-.sou-libiao ul li {
-  display: flex;
 }
 </style>

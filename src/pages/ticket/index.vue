@@ -1,137 +1,152 @@
 <template>
-  <section class="index_section">
-    <BS-scroll ref="scroll">
-      <div>
-        <nav class="Ticket_nav">
-          <div class="nav_left">
-            <router-link tag="b" to="/city">{{this.$store.state.city.n}}</router-link>
-            <i class="nav_city"></i>
-          </div>
-          <p>
-            <a href>筛选影院</a>
-          </p>
-          <span>
-            <a>搜索</a>
-          </span>
-        </nav>
-        <div class="xuan">
-          <ul>
-            <li>
-              <p>
-                <span>离我最近</span>
-                <i></i>
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>全城</span>
-                <i></i>
-              </p>
-            </li>
-            <li>
-              <span>影院特效</span>
-              <i></i>
-            </li>
-          </ul>
-        </div>
-        <!-- 定位失败显示 -->
-        <div class="Ticket-show">
-          <div class="dingwei">
-            <i></i>
-            <p>位置获取失败，请开启定位功能</p>
-            <a>
-              <span>刷新</span>
-            </a>
-          </div>
-        </div>
-        <div class="shengming">{{ticketTitle}}</div>
-        <div>
-          <ul class="xinxi">
-            <router-link tag="li" :to="'/detailmovie/'+item.cinemaId" v-for="(item,index) in ticketList" :key="index" :btn-id="item.cinemaId">
-              <dl>
-                <dt>
-                  <p class="xinxi_b">
-                    <span>{{item.cinameName}}</span>
-                  </p>
-                  <p v-if="item.minPrice" class="xinxi_j">
-                    <b>{{item.minPrice/100}}</b>
-                    <span>元起</span>
-                  </p>
-                </dt>
-                <dd class="adress">
-                  <p>{{item.address}}</p>
-                </dd>
-                <dd class="xx-biao">
-                  <i v-if="item.feature.has3D">3D</i>
-                  <i v-if="item.feature.hasFeature4D">4D</i>
-                  <i v-if="item.feature.hasFeature4K">4K</i>
-                  <i v-if="item.feature.hasIMAX">IMAX</i>
-                  <i v-if="item.feature.hasVIP">VIP</i>
-                  <i v-if="item.feature.hasWifi">WIFI</i>
-                  <i v-if="item.feature.hasLoveseat">情侣座</i>
-                  <i v-if="item.feature.hasFeatureHuge">巨幕</i>
-                  <i v-if="item.feature.hasFeatureDolby">杜比</i>
-                </dd>
-              </dl>
-            </router-link>
-          </ul>
-        </div>
+  <div>
+    <nav class="Ticket_nav">
+      <div class="nav_left">
+        <b>北京</b>
+        <i class="nav_city"></i>
       </div>
-    </BS-scroll>
-  </section>
+      <p>
+        <a href>筛选影院</a>
+      </p>
+      <span>
+        <a>搜索</a>
+      </span>
+    </nav>
+    <div class="xuan">
+      <ul>
+        <li>
+          <p>
+            <span>离我最近</span>
+            <i></i>
+          </p>
+        </li>
+        <li>
+          <p>
+            <span>全城</span>
+            <i></i>
+          </p>
+        </li>
+        <li>
+          <span>影院特效</span>
+          <i></i>
+        </li>
+      </ul>
+    </div>
+    <!-- 定位失败显示 -->
+    <div class="Ticket-show">
+      <div class="dingwei">
+        <i></i>
+        <p>位置获取失败，请开启定位功能</p>
+        <a>
+          <span>刷新</span>
+        </a>
+      </div>
+    </div>
+    <div class="shengming">以下影院均非时光网自营</div>
+    <ul class="xinxi">
+      <li>
+        <dl>
+          <dt>
+            <p class="xinxi_b">
+              <span>金逸国际影城荟聚店</span>
+            </p>
+            <p class="xinxi_j">
+              <b>44</b>
+              <span>元起</span>
+            </p>
+          </dt>
+          <dd class="adress">
+            <p>北京市大兴区欣宁大街15号7-03-122-C1</p>
+          </dd>
+          <dd class="xx-biao">
+            <i>3D</i>
+            <i>IMAX</i>
+            <i>VIP</i>
+            <i>4K</i>
+            <i>情侣座</i>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <p class="xinxi_b">
+              <span>金逸国际影城荟聚店</span>
+            </p>
+            <p class="xinxi_j">
+              <b>44</b>
+              <span>元起</span>
+            </p>
+          </dt>
+          <dd class="adress">
+            <p>北京市大兴区欣宁大街15号7-03-122-C1</p>
+          </dd>
+          <dd class="xx-biao">
+            <i>3D</i>
+            <i>IMAX</i>
+            <i>VIP</i>
+            <i>4K</i>
+            <i>情侣座</i>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <p class="xinxi_b">
+              <span>金逸国际影城荟聚店</span>
+            </p>
+            <p class="xinxi_j">
+              <b>44</b>
+              <span>元起</span>
+            </p>
+          </dt>
+          <dd class="adress">
+            <p>北京市大兴区欣宁大街15号7-03-122-C1</p>
+          </dd>
+          <dd class="xx-biao">
+            <i>3D</i>
+            <i>IMAX</i>
+            <i>VIP</i>
+            <i>4K</i>
+            <i>情侣座</i>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>
+            <p class="xinxi_b">
+              <span>金逸国际影城荟聚店</span>
+            </p>
+            <p class="xinxi_j">
+              <b>44</b>
+              <span>元起</span>
+            </p>
+          </dt>
+          <dd class="adress">
+            <p>北京市大兴区欣宁大街15号7-03-122-C1</p>
+          </dd>
+          <dd class="xx-biao">
+            <i>3D</i>
+            <i>IMAX</i>
+            <i>VIP</i>
+            <i>4K</i>
+            <i>情侣座</i>
+          </dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import { ticketlistApi } from "@api/ticket";
 export default {
-  name: "Ticket",
-  data() {
-    return {
-      ticketTitle: "",
-      ticketList: [],
-    };
-  },
-  async created() {
-    this.handleGetMovieList(this.$store.state.city.cityId);
-  },
-  methods:{
-    async handleGetMovieList(cityId){
-    let TicketList = await ticketlistApi(cityId);
-    this.ticketTitle = TicketList.data.noticeNotOwn;
-    this.ticketList = TicketList.data.cinemaList;
-    }
-  },
-  mounted() {
-    this.$refs.scroll.handleScroll();
-    //下拉刷新
-    this.$refs.scroll.handlepullingDown(()=>{
-        this.handleGetMovieList(this.$store.state.city.cityId);
-    });
-    //上拉加载更多
-    this.$refs.scroll.handlefinishPullUp(()=>{
-      console.log("上拉待用");
-    })
-  },
-  watch: {
-    ticketList(){
-      this.$refs.scroll.handleRefreshDown();
-    }
-  },
+  name: "Ticket"
 };
 </script>
 
 <style>
-.index_section {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-  padding-top: 0.43rem;
-}
 /*nav*/
 .Ticket_nav {
   height: 0.512rem;
@@ -257,7 +272,7 @@ export default {
   border: 1px solid #777;
   color: #777;
   border-radius: 0.033rem;
-  font-size: 0.115rem;
+  font-size: 0.125rem;
 }
 .shengming {
   background: rgb(246, 246, 246);
@@ -277,12 +292,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.xinxi_b span {
-  display: inline-block;
-  max-width: 2.083rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.xixi_b span {
   line-height: 0.158rem;
   font-size: 0.133rem;
 }
@@ -296,6 +306,7 @@ export default {
 .xinxi_j span {
   font-size: 0.125rem;
   position: relative;
+  left: -0.042rem;
 }
 .adress p {
   padding-right: 0.033rem;

@@ -1,115 +1,111 @@
 <template>
   <div style="background-color:#f6f6f6;">
     <section class="index_section">
-    <header>
-      <div class="detail_header">
-        <div>
-          <v-touch
-            tag="img"
-            @tap="handleback()"
-            src="http://static1.mtime.cn/html5/20191022151144/images/2014/h_btn_back.png"
-          />
+      <header>
+        <div class="detail_header">
+          <div>
+            <v-touch
+              tag="img"
+              @tap="handleback()"
+              src="http://static1.mtime.cn/html5/20191022151144/images/2014/h_btn_back.png"
+            />
+          </div>
+          <p>
+            <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/ico_home.png" alt />
+            <img
+              src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_h_shopping.png"
+              alt
+            />
+            <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_h_share.png" alt />
+          </p>
         </div>
-        <p>
-          <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/ico_home.png" alt />
-          <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_h_shopping.png" alt />
-          <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_h_share.png" alt />
-        </p>
-      </div>
-    </header>
-    <article class="detail_section">
-      <div class="detail_pic">
-        <img
-          :src="goods.image"
-          alt
-        />
-      </div>
-      <div class="detail_container">
-        <ul>
-          <li>
-            <div class="title">
-              <a href="#">
-                <em class="zy">{{goods.goodsTip}}</em>
-                {{goods.longGoodsName}}
-                <span
-                  class="xinpin"
-                  style="background-color:#25ACBD"
-                >新品</span>
-              </a>
-            </div>
-            <div class="price">
-              <b>
-                <i>￥</i>{{goods.minSalePrice/100}}
-              </b>
-            </div>
-            <p class="huiyuan">
-              <span>{{goods.postAgeText}}</span>
-              <span class="consignment-time"></span>
-            </p>
-            <div class="cuxiao">
-              <p class="tf">
-                促销
-                <span>优惠券</span>
-                点击查看可用优惠券
-                <i>></i>
+      </header>
+      <article class="detail_section">
+        <div class="detail_pic">
+          <img :src="goods.image" alt />
+        </div>
+        <div class="detail_container">
+          <ul>
+            <li>
+              <div class="title">
+                <a href="#">
+                  <em class="zy">{{goods.goodsTip}}</em>
+                  {{goods.longGoodsName}}
+                  <span
+                    class="xinpin"
+                    style="background-color:#25ACBD"
+                  >新品</span>
+                </a>
+              </div>
+              <div class="price">
+                <b>
+                  <i>￥</i>
+                  {{goods.minSalePrice/100}}
+                </b>
+              </div>
+              <p class="huiyuan">
+                <span>{{goods.postAgeText}}</span>
+                <span class="consignment-time"></span>
               </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="pingjia">
-        <span>评价晒单(1人评论)</span>
-        <a>100%好评&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
-      </div>
-      <div class="tuwen">
-        <span>图文详情</span>
-        <span>规格参数</span>
-        <span>购买须知</span>
-      </div>
-      <div class="jieshao">
-        <p>{{goods.longName}}</p>
-      </div>
-      <div class="zhuyi">
-        <b>随机发 拆盒不退不换</b>
-      </div>
-    </article>
-    
-    <div class="shop_footer">
-      <footer>
-        <div class="footer">
-          <span>收藏</span>
-          <span>咨询</span>
-          <router-link tag="a" to="/cart" 
-            href="#" style="background-color: #ff8600;">加入购物车
-          </router-link>
-          <a href="#" style="background-color: #f23030;">立即购买</a>
+              <div class="cuxiao">
+                <p class="tf">
+                  促销
+                  <span>优惠券</span>
+                  点击查看可用优惠券
+                  <i>></i>
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
-      </footer>
-    </div>
+        <div class="pingjia">
+          <span>评价晒单(1人评论)</span>
+          <a>100%好评&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+        </div>
+        <div class="tuwen">
+          <span>图文详情</span>
+          <span>规格参数</span>
+          <span>购买须知</span>
+        </div>
+        <div class="jieshao">
+          <p>{{goods.longName}}</p>
+        </div>
+        <div class="zhuyi">
+          <b>随机发 拆盒不退不换</b>
+        </div>
+      </article>
+      <div class="shop_footer">
+        <footer>
+          <div class="footer">
+            <span>收藏</span>
+            <span>咨询</span>
+            <router-link tag="a" to="/cart" href="#" style="background-color: #ff8600;">加入购物车</router-link>
+            <a href="#" style="background-color: #f23030;">立即购买</a>
+          </div>
+        </footer>
+      </div>
     </section>
   </div>
 </template>
-// color:#fff"
-// padding:20px;color:#fff"
 <script>
-import {shoppingdetailApi} from "@api/shopping"
+import { shoppingdetailApi } from "@api/shopping";
 export default {
   name: "Shopdetail",
-  props:["goodsId"],
-  data(){
+  props: ["goodsId"],
+  data() {
     return {
-      goods:"",
-    }
+      goods: ""
+    };
   },
   methods: {
     handleback() {
       this.$router.back("/shopping");
     }
   },
-  async created(){
+  async created() {
     let data = await shoppingdetailApi(this.goodsId);
     this.goods = data.data.productDetail.goods;
-  },
+  }
 };
 </script>
 
@@ -127,7 +123,6 @@ export default {
   padding-bottom: 0.43rem;
   background-color: #fff;
 }
-
 
 header {
   width: 100%;
@@ -185,7 +180,7 @@ section {
 .detail_section .detail_pic img {
   width: 2.6rem;
   height: 2.6rem;
-  margin: .083rem auto 0;
+  margin: 0.083rem auto 0;
 }
 
 .detail_container {
@@ -338,17 +333,17 @@ footer {
   font-size: 0.133rem;
   line-height: 0.448rem;
 }
-.footer a{
+.footer a {
   width: 1.092rem;
   height: 100%;
   display: inline-block;
   text-align: center;
   color: #fff;
 }
-.footer span{
-  margin-left: .125rem;
+.footer span {
+  margin-left: 0.125rem;
 }
-.footer span:nth-of-type(2){
-  margin-right: .15rem;
+.footer span:nth-of-type(2) {
+  margin-right: 0.15rem;
 }
 </style>

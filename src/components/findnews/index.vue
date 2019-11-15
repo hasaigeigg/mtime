@@ -1,110 +1,256 @@
 <template>
-  <div class="findnews">
+  <div>
     <div class="newpic">
-      <a :data-id="NewTitle.newsID">
-        <img :src="NewTitle.imageUrl" alt />
+      <a>
+        <img
+          src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F07%2F18%2F102211.29411290.jpg&width=640&height=360&clipType=3"
+          alt
+        />
         <h2>
-          <b>{{NewTitle.title}}</b>
+          <b>《复仇者联盟4》重要彩蛋全解析</b>
         </h2>
       </a>
     </div>
     <div class="newlist">
       <ul>
         <!-- 三图模板 -->
-        <li v-for="(item,index) in NewContent" :key="index" :class="item.type != 1? 'xiaotu-list':''">
-          <!-- 三图模板 -->
-          <div class="santu" v-if="item.type == 1">
+        <li>
+          <div class="santu">
             <h2>
-              <a>{{item.title}}</a>
+              <a>汤唯新写真气场全开酷飒变身</a>
             </h2>
             <div class="picList">
               <a href>
                 <img
-                  :src="item.images[0].url1"
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F162501.24392867.jpg&width=190&height=130&clipType=4"
                   alt
                 />
               </a>
               <a href>
                 <img
-                   :src="item.images[1].url1"
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F162501.10609395.jpg&width=190&height=130&clipType=4"
                   alt
                 />
               </a>
               <a href>
                 <img
-                   :src="item.images[2].url1"
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F162502.75695558.jpg&width=190&height=130&clipType=4"
                   alt
                 />
               </a>
             </div>
             <p>
-              <!-- 后期过滤使用 需要过滤事件计算已过去时间 -->
-              <time>{{item.publishTime}}</time>
-              <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
+              <time>8小时前</time>
             </p>
           </div>
-          <!-- 小图模板 -->
-           <div class="table" v-if="item.type == 0">
-            <div class="table_lists-pic">
-              <img
-                class="img_box"
-                :src="item.image"
-                alt
-              />
+        </li>
+        <!-- 三图带评论 -->
+        <li>
+          <div class="santu">
+            <h2>
+              <a>"星云"凯伦·吉兰最新美艳写真</a>
+            </h2>
+            <div class="picList">
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155148.81184536.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155202.85074005.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155204.52449691.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
             </div>
-            <div class="table-text">
-              <h2>{{item.title}}</h2>
-              <p>
-                <time>13小时前</time>
-                <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
-              </p>
-            </div>
+            <p>
+              <time>9小时前</time>
+              <b class="newlist-ping">评论 1</b>
+            </p>
           </div>
-          <!-- 小图带video -->
-          <div class="table" v-if="item.type == 2">
-            <div class="table_lists-pic">
-              <i class="index-radio"></i>
+        </li>
+        <li>
+          <div class="santu">
+            <h2>
+              <a>《烈火英雄》疑似涉抄袭</a>
+            </h2>
+            <div class="picList">
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155055.73438587.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155053.75446294.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155135.74936649.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+            </div>
+            <p>
+              <time>9小时前</time>
+              <b class="newlist-ping">评论 3</b>
+            </p>
+          </div>
+        </li>
+        <!-- 小图模板 -->
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic clearboth">
               <img
                 class="img_box"
-                :src="item.image"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F10%2F151739.81533057.jpg&width=150&height=150&clipType="
                 alt
               />
             </div>
             <div class="table-text">
-              <h2>{{item.title}}</h2>
+              <h2>《僵尸之地2》影评</h2>
               <p>
-                <time>15小时前</time>
-                <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
+                <time>9小时前</time>
               </p>
             </div>
           </div>
         </li>
+        <li>
+          <div class="santu">
+            <h2>
+              <a>"星云"凯伦·吉兰最新美艳写真</a>
+            </h2>
+            <div class="picList">
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155148.81184536.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155202.85074005.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F10%2F155204.52449691.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+            </div>
+            <p>
+              <time>9小时前</time>
+              <b class="newlist-ping">评论 1</b>
+            </p>
+          </div>
+        </li>
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F10%2F142657.13878933.jpg&width=150&height=150&clipType="
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>比尔·默瑞确认回归《捉鬼敢死队3》</h2>
+              <p>
+                <time>9小时前</time>
+              </p>
+            </div>
+          </div>
+        </li>
+        <!-- 小图带评论 -->
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F10%2F114132.69778713.jpg&width=150&height=150&clipType="
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>克里斯·帕拉特《幽灵征募》曝片场..</h2>
+              <p>
+                <time>13小时前</time>
+                <b class="newlist-ping">评论 5</b>
+              </p>
+            </div>
+          </div>
+        </li>
+        <!-- 小图带评论带viedo -->
+        <li class="xiaotu-list">
+          <div class="table">
+            <div class="table_lists-pic">
+              <i class="index-radio"></i>
+              <img
+                class="img_box"
+                src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F10%2F105710.82316616.jpg&width=150&height=150&clipType="
+                alt
+              />
+            </div>
+            <div class="table-text">
+              <h2>侯孝贤《海上花》发4K修复版预告片..</h2>
+              <p>
+                <time>15小时前</time>
+                <b class="newlist-ping">评论 2</b>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="santu">
+            <h2>
+              <a>"小丑"成影史上最赚钱的漫改电影</a>
+            </h2>
+            <div class="picList">
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F09%2F134915.70602650.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F09%2F134916.15896526.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+              <a href>
+                <img
+                  src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2FCMS%2FGallery%2F2019%2F11%2F09%2F134917.33587807.jpg&width=190&height=130&clipType=4"
+                  alt
+                />
+              </a>
+            </div>
+            <p>
+              <time>昨天 05:48</time>
+              <b class="newlist-ping">评论 28</b>
+            </p>
+          </div>
+        </li>
       </ul>
     </div>
-     <div class="index_more">查看更多</div>
   </div>
-  
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { findnewcontentApi } from "@api/find";
 export default {
-  name: "FindNews",
-  data() {
-    return {
-      NewContent: []
-    };
-  },
-  computed: {
-    ...mapState({
-      NewTitle: state => state.find.Findnew
-    })
-  },
-  async created() {
-    let data = await findnewcontentApi();
-    this.NewContent = data.newsList;
-  }
+  name: "FindNews"
 };
 </script>
 
@@ -164,7 +310,7 @@ export default {
 .picList a img {
   border: 1px solid #d8d8d8;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .santu p {
@@ -190,7 +336,7 @@ export default {
   position: relative;
 }
 
-.findnews .img_box {
+.img_box {
   border: 1px solid #ddd;
   width: 0.75rem;
   height: 0.75rem;
@@ -231,11 +377,5 @@ export default {
 /*清楚莫名多得right*/
 .clearboth {
   margin-right: 0;
-}
-.index_more {
-  font-size: 0.133rem;
-  padding: 0.108rem 0;
-  color: #1e7dd7;
-  text-align: center;
 }
 </style>

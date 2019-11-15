@@ -3,14 +3,14 @@ import App from './App.vue'
 import router from './router'
 import VueTouch from 'vue-touch'
 import "@common/components";
-import "@common/filter";
-import store from './store'
+import "@common/filter"
 
+
+import "./lib/loading/index.js"
 Vue.use(VueTouch,{name:"v-touch"})
 Vue.config.productionTip = false
 
 new Vue({
-  store,
-  router, 
+  router,
   render: h => h(App)
 }).$mount('#app')
