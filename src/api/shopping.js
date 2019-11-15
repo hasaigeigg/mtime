@@ -35,3 +35,6 @@ export const shoppingdetailApi = (goodsId) => http({
         goodsId,
     }
 })
+
+
+//-------------------------------------------------------------
