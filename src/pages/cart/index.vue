@@ -17,14 +17,14 @@
               <a>MightyJaxx海绵宝宝系列</a>
             </h3>
             <div class="table">
-              <div class="picturebox">
+              <div class="picbox">
                 <img
                   src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fgoods%2F2019%2F10%2F08%2F135733.86814649_600X600X2.jpg"
                 />
               </div>
               <div class="count">
                 <span>-</span>
-                <input type="text" size="1" value="1" class="picturebox_input" />
+                <input type="text" size="1" value="1" class="picbox_input" />
                 <span>+</span>
               </div>
               <div class="carprice">
@@ -140,15 +140,15 @@ section {
   justify-content: space-between;
   align-items: center;
 }
-.picturebox {
+.picbox {
   width: 0.6rem;
   height: 0.6rem;
 }
-.picturebox img {
+.picbox img {
   width: 100%;
   height: 100%;
 }
-.picturebox_input {
+.picbox_input {
   text-align: center;
   border: none;
   outline: none;

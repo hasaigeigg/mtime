@@ -6,10 +6,10 @@
               <a v-if="item.bj==0">
                   <i :class="item.name"></i>
               </a>
-              <a v-if="item.bj==1" @click="handleHuanYe(index)" :class="value == index ? 'curr':''">
+              <v-touch tag="a" v-if="item.bj==1" @tap="handleHuanYe(index)" :class="value == index ? 'curr':''">
                   <span>{{item.name}}</span>
                   <em v-if="item.new" class="new">NEW</em>
-              </a>
+              </v-touch>
           </router-link>
       </ul>
     </header>
@@ -65,7 +65,7 @@ export default {
   },
   methods:{
     handleHuanYe(index){
-      // console.log(1111);
+      console.log(1111);
       this.value = index ;
     }
   }

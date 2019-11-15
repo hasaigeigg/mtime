@@ -6,12 +6,13 @@
       </v-touch>
     </div>
 
-    <a>
+    <a v-if="!(title)">
         <i class="logo-mtime"></i>
     </a>
+    <a class="biaoti" v-if="title">{{title}}</a>
 
     <div class="zhanwei">
-
+        <i class="iconfont" v-html="tubiao"></i>
     </div>
   </div>
 </template>
@@ -22,6 +23,9 @@ export default {
   props: {
     title: {
       type: String,
+    },
+    tubiao:{
+      type:String,
     },
     icon:{
         type:Boolean
@@ -46,6 +50,7 @@ export default {
     top: 0;
     left: 0;
     background: #1c2635;
+    z-index: 50;
 
 }
 .iconfont{
@@ -70,5 +75,12 @@ export default {
 }
 .zhanwei{
     width: .44rem;
+}
+.biaoti{
+  font-size: .167rem;
+  color: #fff;
+}
+.zhanwei i{
+  color: #fff
 }
 </style>

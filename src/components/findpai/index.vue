@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="newpic">
-      <a>
+      <a :data-id="Findtoplist.id">
         <img
-          src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F03%2F01%2F173620.86296561.jpg&width=640&height=360&clipType=3"
+          :src="Findtoplist.imageUrl"
           alt
         />
         <h2>
-          <b>那些荣获奥斯卡的LGBT电影</b>
+          <b>{{Findtoplist.title}}</b>
         </h2>
       </a>
     </div>
@@ -30,58 +30,40 @@
       </div>
     </div>
     <ul class="topnews">
-      <li>
+      <li v-for="(item,index) in Paicontent" :key="index" :data-id="item.id">
         <a>
           <div class="top-text">
-            <h2>昆汀·塔伦蒂诺个人推荐私宠电影Top20</h2>
-            <p>昆汀也是一个狂热的影迷昆汀也是一个狂热的影迷昆汀也是一个狂热的影迷</p>
-          </div>
-          <i class="top-i-tnext"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <div class="top-text">
-            <h2>昆汀·塔伦蒂诺个人推荐私宠电影Top20</h2>
-            <p>昆汀也是一个狂热的影迷</p>
-          </div>
-          <i class="top-i-tnext"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <div class="top-text">
-            <h2>昆汀·塔伦蒂诺个人推荐私宠电影Top20</h2>
-            <p>昆汀也是一个狂热的影迷</p>
-          </div>
-          <i class="top-i-tnext"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <div class="top-text">
-            <h2>昆汀·塔伦蒂诺个人推荐私宠电影Top20</h2>
-            <p>昆汀也是一个狂热的影迷</p>
-          </div>
-          <i class="top-i-tnext"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <div class="top-text">
-            <h2>昆汀·塔伦蒂诺个人推荐私宠电影Top20</h2>
-            <p>昆汀也是一个狂热的影迷</p>
+            <h2>{{item.topListNameCn}}</h2>
+            <p>{{item.summary}}</p>
           </div>
           <i class="top-i-tnext"></i>
         </a>
       </li>
     </ul>
+     <div class="index_more">查看更多</div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { findpaicontentApi } from "@api/find";
+
 export default {
-    name:"Yu"
+  name: "Yu",
+  data(){
+    return{
+      Paicontent:[]
+    }
+  },
+  computed: {
+    ...mapState({
+      Findtoplist: state => state.find.Findtoplist
+    })
+  },
+  async created() {
+    let data = await findpaicontentApi();
+    this.Paicontent = data.topLists;
+  }
 };
 </script>
 
@@ -190,5 +172,16 @@ export default {
   background: url(https://static1.mtime.cn/html5/20191022151144/images/2014/i-tmore.png)
     no-repeat center center;
   background-size: auto 0.08rem;
+}
+
+.newpic a img{
+  width: 100%;
+  height: 100%;
+}
+.index_more {
+  font-size: 0.133rem;
+  padding: 0.108rem 0;
+  color: #1e7dd7;
+  text-align: center;
 }
 </style>

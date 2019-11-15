@@ -28,7 +28,8 @@ export default {
 
 <style>
 .loader {
-  background: rgba(0,0,0,.6);
+  background: #000;
+  background: radial-gradient(#222, #000);
   bottom: 0;
   left: 0;
   overflow: hidden;

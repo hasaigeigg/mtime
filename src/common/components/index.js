@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import HeaderFan from './headerfan';
+import BScroll from './bscroll';
 
 let componentMap = [
-    HeaderFan
+    HeaderFan,
+    BScroll
 ]
 
 componentMap.forEach((item)=>{
