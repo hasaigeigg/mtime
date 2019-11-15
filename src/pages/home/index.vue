@@ -54,7 +54,7 @@
                 <div class="table-text">
                   <h2>{{item.title}}</h2>
                   <p>
-                    <time>{{item.publishTime | toLastTime()}}</time>
+                    <time>35分钟前</time>
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                 <div class="big-text">
                   <h2>{{item.title}}</h2>
                   <p>
-                    <time>{{item.publishTime | toLastTime()}}</time>
+                    <time>10小时前</time>
                   </p>
                 </div>
               </div>
@@ -88,7 +88,7 @@
                   </a>
                 </div>
                 <p>
-                  <time>{{item.publishTime | toLastTime()}}</time>
+                  <time>17小时前</time>
                 </p>
               </div>
             </li>
@@ -322,7 +322,7 @@ export default {
 .img_box {
   border: 1px solid #ddd;
   width: 100%;
-  height: 100%;
+  /* height: auto; */
 }
 .table-text time {
   font-size: 0.083rem;
