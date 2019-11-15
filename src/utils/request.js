@@ -12,7 +12,7 @@ server.interceptors.request.use((config)=>{
         config.params = {...config.data};
     }
 
-    // loading.createLoading();
+    // loading.createLoading(); 
     return config;
 },(err)=>{
     return Promise.reject(err);

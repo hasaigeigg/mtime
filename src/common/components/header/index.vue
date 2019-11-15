@@ -60,13 +60,13 @@ export default {
           path: '/mine'
         },
       ],
-      value: 1
+      value: JSON.parse(sessionStorage.getItem("Header-Nm"))||1
     };
   },
   methods:{
     handleHuanYe(index){
-      console.log(1111);
       this.value = index ;
+      sessionStorage.setItem("Header-Nm",JSON.stringify(this.value));      
     }
   }
 };

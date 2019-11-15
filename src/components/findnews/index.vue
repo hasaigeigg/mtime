@@ -154,7 +154,7 @@ export default {
 .picList a img {
   border: 1px solid #d8d8d8;
   width: 100%;
-  height: 100%;
+  height: 1.083rem;
 }
 
 .santu p {
