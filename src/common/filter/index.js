@@ -48,7 +48,7 @@ Vue.filter("toLastTime",(lastTime)=>{
     var seconds_of_1year = seconds_of_30days * 12;
 
     var elapsedTime = (new Date().getTime()/1000 - lastTime);
-    console.log(lastTime,new Date().getTime())
+    // console.log(lastTime,new Date().getTime())
     if (elapsedTime < seconds_of_1minute) {
  
         return "刚刚";

@@ -18,3 +18,5 @@ class JSLoading{
 }
 
 export default new JSLoading();
+
+//--------

@@ -102,6 +102,7 @@
 
 <script>
 import { homereApi, homecontentApi, mcApi } from "@api/home";
+import MessageBox from "../../lib/messageBox/index.js";
 export default {
   name: "Home",
   data() {
@@ -130,6 +131,14 @@ export default {
   },
   created() {
     this.handleGengXinShuJu();
+
+    MessageBox({
+      title:"城市定位",
+      content:this.$store.state.city.n,
+      ok:()=>{
+        alert(1)
+      }
+    });
   },
   updated() {
    this.handleGengXinShuJu();

@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import home from './home';
 import find from './find';
 import shopping from './shopping';
+import shopmowan from './shopmowan';
 import ticket from './ticket';
 import mine from './mine';
 
@@ -18,6 +19,7 @@ const router = new VueRouter({
         home,
         find,
         shopping,
+        shopmowan,
         ticket,
         mine,
         {
@@ -38,7 +40,32 @@ const router = new VueRouter({
             name:'detailmovie',
             component:_=>import("@pages/detailsmovie"),
             props:true
-        }
+        },
+        {
+            path:'/shopsou',
+            name:'shopsou',
+            component:_=>import("@pages/shopsou"),
+            meta:{
+                Tab:true
+            }
+        },
+        {
+            path:'/shopdetail/:goodsId',
+            name:'shopdetail',
+            component:_=>import("@pages/shopdetail"),
+            props:true,
+            meta:{
+                Tab:false
+            }
+        },
+        {
+            path:'/cart',
+            name:'cart',
+            component:_=>import("@pages/cart"),
+            meta:{
+                Tab:false
+            }
+        },
     ]
 })
 

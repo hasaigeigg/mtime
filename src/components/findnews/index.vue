@@ -18,25 +18,14 @@
               <a>{{item.title}}</a>
             </h2>
             <div class="picList">
-              <a href>
+              <a href v-for="(child,ndx) in item.images" :key="ndx">
                 <img
-                  :src="item.images[0].url1"
-                  alt
-                />
-              </a>
-              <a href>
-                <img
-                   :src="item.images[1].url1"
-                  alt
-                />
-              </a>
-              <a href>
-                <img
-                   :src="item.images[2].url1"
+                  :src="child.url1"
                   alt
                 />
               </a>
             </div>
+
             <p>
               <!-- 后期过滤使用 需要过滤事件计算已过去时间 -->
               <time>{{item.publishTime}}</time>
@@ -103,6 +92,7 @@ export default {
   },
   async created() {
     let data = await findnewcontentApi();
+    console.log(data);
     this.NewContent = data.newsList;
   }
 };
