@@ -37,3 +37,5 @@ export default (()=>{
         document.body.appendChild(messageBoxVm.$mount().$el);
     }
 })()
+
+//-------------------12
