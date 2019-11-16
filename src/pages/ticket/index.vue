@@ -108,13 +108,14 @@ export default {
         this.handleGetMovieList(this.$store.state.city.cityId);
     });
     //上拉加载更多
-    this.$refs.scroll.handlefinishPullUp(()=>{
+    this.$refs.scroll.handlepullingUp(()=>{
       console.log("上拉待用");
     })
   },
   watch: {
     ticketList(){
       this.$refs.scroll.handleRefreshDown();
+      this.$refs.scroll.handlefinishPullUp();
     }
   },
 };

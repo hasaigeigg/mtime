@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app">
     <Header v-if="$route.meta.flag"/>
-      <keep-alive>
+      <keep-alive :exclude="(/(Detailsmovie|Shopdetail)/)">
         <router-view></router-view>
       </keep-alive>
   </div>

@@ -24,7 +24,7 @@
                 alt
               />
             </div>
-            <div class="table-text">
+            <div class="Y-table-text">
               <h2>{{item.movieName}}</h2>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default {
   display: flex;
 }
 
-.table-text {
+.Y-table-text {
   width: 1.725rem;
   padding-right: 0.15rem;
   padding-left: 0.15rem;
@@ -133,11 +133,11 @@ export default {
   height: 100%;
 }
 
-.table-text h2 {
+.Y-table-text h2 {
   font-size: 0.15rem;
 }
 
-.table-text p {
+.Y-table-text p {
   margin-top: 0.117rem;
   font-size: 0.083rem;
   color: #acacac;

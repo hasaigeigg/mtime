@@ -1,107 +1,109 @@
 <template>
   <section class="index_section">
-    <div>
-      <nav class="index_nav">
-        <div class="nav_left">
-          <router-link tag="b" to="/city">{{this.$store.state.city.n}}</router-link>
-          <i class="nav_city"></i>
-        </div>
-        <router-link tag="p" to="/sou">
-          <a>影片/影院/影人，任你搜</a>
-        </router-link>
-      </nav>
-      <div class="reying">
-        <h2>
-          <a href="javascript:;">
-            <i class="i_next"></i>
-            <b>正在热映（{{Reying}}部）</b>
-          </a>
-        </h2>
-        <ul>
-          <li v-for="(item,index) in HomeList" :key="index">
-            <a>
-              <div class="pic">
-                <img :src="item.img" alt />
-                <em v-show="item.r != -1" class="pfen">{{item.r}}</em>
-              </div>
-              <p>{{item.t}}</p>
+    <BS-scroll ref="Hscroll">
+      <div>
+        <nav class="index_nav">
+          <div class="nav_left">
+            <router-link tag="b" to="/city">{{this.$store.state.city.n}}</router-link>
+            <i class="nav_city"></i>
+          </div>
+          <router-link tag="p" to="/sou">
+            <a>影片/影院/影人，任你搜</a>
+          </router-link>
+        </nav>
+        <div class="reying">
+          <h2>
+            <a href="javascript:;">
+              <i class="i_next"></i>
+              <b>正在热映（{{Reying}}部）</b>
             </a>
-          </li>
-        </ul>
-      </div>
-      <div class="jijiang">
-        <a>
-          <h2>即将上映（62部）</h2>
-          <i class="i_next i_xnext"></i>
-        </a>
-      </div>
-      <div class="content">
-        <div class="gg">
-          <img
-            src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2018%2F07%2F31%2F143906.61810640.jpg&width=640&height=320&clipType=4"
-            alt
-          />
-        </div>
-        <div class="b_bj">
-          <h2 class="hot">今日热点</h2>
+          </h2>
           <ul>
-            <li v-for="(item,index) in HomeRedian" :key="index">
-              <!-- 小图模板 -->
-              <div v-if="item.styleType == 1" class="table">
-                <div class="table-pic">
-                  <img class="img_box" :src="item.images[0].imgUrl" alt />
+            <li v-for="(item,index) in HomeList" :key="index">
+              <a>
+                <div class="pic">
+                  <img :src="item.img" alt />
+                  <em v-show="item.r != -1" class="pfen">{{item.r}}</em>
                 </div>
-                <div class="table-text">
-                  <h2>{{item.title}}</h2>
-                  <p>
-                    <time>35分钟前</time>
-                  </p>
-                </div>
-              </div>
-              <!-- 大图模板 -->
-              <div v-else-if="item.styleType == 2">
-                <div class="big-img">
-                  <img class="img_box" :src="item.images[0].imgUrl" alt />
-                  <i class="index-radio"></i>
-                </div>
-                <div class="big-text">
-                  <h2>{{item.title}}</h2>
-                  <p>
-                    <time>10小时前</time>
-                  </p>
-                </div>
-              </div>
-              <!-- 三图模板 -->
-              <div v-else-if="item.styleType == 3" class="santu">
-                <h2>
-                  <a>{{item.title}}</a>
-                </h2>
-                <div class="picList">
-                  <a href>
-                    <img :src="item.images[0].imgUrl" alt />
-                  </a>
-                  <a href>
-                    <img :src="item.images[1].imgUrl" alt />
-                  </a>
-                  <a href>
-                    <img :src="item.images[2].imgUrl" alt />
-                  </a>
-                </div>
-                <p>
-                  <time>17小时前</time>
-                </p>
-              </div>
+                <p>{{item.t}}</p>
+              </a>
             </li>
           </ul>
         </div>
+        <div class="jijiang">
+          <a>
+            <h2>即将上映（62部）</h2>
+            <i class="i_next i_xnext"></i>
+          </a>
+        </div>
+        <div class="content">
+          <div class="gg">
+            <img
+              src="https://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2018%2F07%2F31%2F143906.61810640.jpg&width=640&height=320&clipType=4"
+              alt
+            />
+          </div>
+          <div class="b_bj">
+            <h2 class="hot">今日热点</h2>
+            <ul>
+              <li v-for="(item,index) in HomeRedian" :key="index">
+                <!-- 小图模板 -->
+                <div v-if="item.styleType == 1" class="table">
+                  <div class="table-pic">
+                    <img class="img_box" :src="item.images[0].imgUrl" alt />
+                  </div>
+                  <div class="table-text">
+                    <h2>{{item.title}}</h2>
+                    <p>
+                      <time>{{item.publishTime | toLastTime()}}</time>
+                    </p>
+                  </div>
+                </div>
+                <!-- 大图模板 -->
+                <div v-else-if="item.styleType == 2">
+                  <div class="big-img">
+                    <img class="img_box" :src="item.images[0].imgUrl" alt />
+                    <i class="index-radio"></i>
+                  </div>
+                  <div class="big-text">
+                    <h2>{{item.title}}</h2>
+                    <p>
+                      <time>{{item.publishTime | toLastTime()}}</time>
+                    </p>
+                  </div>
+                </div>
+                <!-- 三图模板 -->
+                <div v-else-if="item.styleType == 3" class="santu">
+                  <h2>
+                    <a>{{item.title}}</a>
+                  </h2>
+                  <div class="picList">
+                    <a href>
+                      <img :src="item.images[0].imgUrl" alt />
+                    </a>
+                    <a href>
+                      <img :src="item.images[1].imgUrl" alt />
+                    </a>
+                    <a href>
+                      <img :src="item.images[2].imgUrl" alt />
+                    </a>
+                  </div>
+                  <p>
+                    <time>{{item.publishTime | toLastTime()}}</time>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="index_more">查看更多</div>
+    </BS-scroll>
   </section>
 </template>
 
 <script>
 import { homereApi, homecontentApi, mcApi } from "@api/home";
+import MessageBox from "../../lib/messageBox/index.js";
 export default {
   name: "Home",
   data() {
@@ -109,30 +111,65 @@ export default {
       HomeList: JSON.parse(sessionStorage.getItem("HomeList")) || [],
       Reying: "51",
       HomeRedian: JSON.parse(sessionStorage.getItem("HomeRedian")) || [],
-      IdType:""
+      IdType: "",
+      HNumber: 1
     };
   },
   methods: {
-   async handleGengXinShuJu(){
-       if (!(this.IdType == this.$store.state.city.cityId)) {
-      let homeList = await homereApi(this.$store.state.city.cityId);
-      this.Reying = homeList.ms.length;
-      this.HomeList = homeList.ms.slice(0, 8);
+    async handleGengXinShuJu() {
+      if (!(this.IdType == this.$store.state.city.cityId)) {
+        let homeList = await homereApi(this.$store.state.city.cityId);
+        this.Reying = homeList.ms.length;
+        this.HomeList = homeList.ms.slice(0, 8);
 
-      let content = await homecontentApi(this.$store.state.city.cityId);
-      this.HomeRedian = content.data.list;
-      sessionStorage.setItem("HomeList", JSON.stringify(homeList.ms.slice(0, 8)));
-      sessionStorage.setItem("HomeRedian", JSON.stringify(content.data.list));
+        let content = await homecontentApi();
+        this.HomeRedian = content.data.list;
+        sessionStorage.setItem(
+          "HomeList",
+          JSON.stringify(homeList.ms.slice(0, 8))
+        );
+        sessionStorage.setItem("HomeRedian", JSON.stringify(content.data.list));
 
-      this.IdType = this.$store.state.city.cityId;
-    }
+        this.IdType = this.$store.state.city.cityId;
+      }
+    },
+    async haneleMoreHome() {
+      let time = parseInt(new Date().getTime() / 1000);
+      let MoreHotHome = await homecontentApi(time, this.HNumber);
+      this.HomeRedian.push(MoreHotHome.data.list);
+      console.log(MoreHotHome);
     }
   },
   created() {
     this.handleGengXinShuJu();
+
+    MessageBox({
+      title: "城市定位",
+      content: this.$store.state.city.n,
+      ok: () => {
+        alert(1);
+      }
+    });
   },
   updated() {
-   this.handleGengXinShuJu();
+    this.handleGengXinShuJu();
+  },
+  mounted() {
+    // this.$refs.Hscroll.handleScroll();  只上拉 不下拉可以不加
+    this.$refs.Hscroll.handlepullingUp( async()=>{
+      let time = parseInt(new Date().getTime() / 1000);
+      let MoreHotHome = await homecontentApi(time, this.HNumber);
+      for(var a = 0; a < MoreHotHome.data.list.length;a++){
+        this.HomeRedian.push(MoreHotHome.data.list[a]);
+      }
+      
+      console.log(this.HomeRedian);
+    })
+  },
+  watch: {
+    HomeRedian(){
+      this.$refs.Hscroll.handlefinishPullUp();
+    }
   },
 };
 </script>
@@ -378,7 +415,7 @@ export default {
 .picList a img {
   border: 1px solid #d8d8d8;
   width: 100%;
-  height: 100%;
+  min-height: 1.583rem;
 }
 .santu p {
   font-size: 0.083rem;
@@ -390,5 +427,8 @@ export default {
   padding: 0.108rem 0;
   color: #1e7dd7;
   text-align: center;
+}
+.big-img img {
+  height: 1.383rem;
 }
 </style>
