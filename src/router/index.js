@@ -6,6 +6,7 @@ import shopping from './shopping';
 import shopmowan from './shopmowan';
 import ticket from './ticket';
 import mine from './mine';
+import Cookies from 'js-cookie'
 
 Vue.use(VueRouter);
 
@@ -70,11 +71,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next)=>{
-    if(to.path !="/login" && to.meta.requireAuth){
-        if(localStorage.getItem("token")){
+    if(to.path =="/mine/user"){
+        if(Cookies.get("token")){
+            console.log(1);
             next();
         }else{
-            next({name:"login",params:{to:to.path}});
+            console.log(2);
+            next("/mine/load");
         }
     }else{
         next();

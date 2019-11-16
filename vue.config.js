@@ -20,7 +20,11 @@ module.exports = {
                 changeOrigin:true
             },
             "/cinema":{
-                target:"https://ticket-api-m.mtime.cn"
+                target:"https://ticket-api-m.mtime.cn",
+                changeOrigin:true
+            },
+            "/users":{
+                target:"http://localhost:3000"
             }
             
         }   

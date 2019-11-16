@@ -5,12 +5,22 @@ export default {
     meta: {
         flag: false,
         requireAuth: false,
-        Tab: true
     },
     children: [
         {
             path: "/mine",
-            redirect: "/mine/load"
+            redirect: "/mine/user"
+        },
+
+        {
+            path: "user",
+            component: _ => import("@components/mineuser"),
+            name: "user",
+            meta: {
+                flag: false,
+                requireAuth: false,
+                top:false
+            },
         },
 
         {
@@ -20,9 +30,10 @@ export default {
             meta: {
                 flag: false,
                 requireAuth: false,
-                Tab: true
+                top:true
             },
         },
+        
         {
             path: "zhuce",
             component: _ => import("@components/minezhuce"),
@@ -30,7 +41,7 @@ export default {
             meta: {
                 flag: false,
                 requireAuth: false,
-                Tab: true
+                top:true
             },
         }
 

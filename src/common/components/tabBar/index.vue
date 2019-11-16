@@ -2,11 +2,16 @@
   <div>
     <footer class="index_footer">
       <ul class="footer-ul">
-        <router-link v-for="(item,index) in TabList" :key="index" :to="item.path" tag="li">
+        <v-touch
+          v-for="(item,index) in TabList"
+          @tap="handleDiTitle(index)"
+          :key="index"
+          tag="li"
+        >
           <a>
             <span>{{item.title}}</span>
           </a>
-        </router-link>
+        </v-touch>
       </ul>
     </footer>
   </div>
@@ -14,38 +19,45 @@
 
 <script>
 export default {
-    name:"TabBar",
-    data(){
-        return{
-            TabList:[
-                {
-                    title:"首页",
-                    path:"/home"
-                },
-                {
-                    title:"购票",
-                    path:"/ticket"
-                },
-                {
-                    title:"商城",
-                    path:"/shopping"
-                },
-                {
-                    title:"发现",
-                    path:"/find"
-                },
-                {
-                    title:"我的",
-                    path:"/mine"
-                },
-            ]
+  name: "TabBar",
+  data() {
+    return {
+      TabList: [
+        {
+          title: "首页",
+          path: "/home"
+        },
+        {
+          title: "购票",
+          path: "/ticket"
+        },
+        {
+          title: "商城",
+          path: "/shopping"
+        },
+        {
+          title: "发现",
+          path: "/find"
+        },
+        {
+          title: "我的",
+          path: "/mine"
         }
+      ]
+    };
+  },
+  methods: {
+    handleDiTitle(index) {
+      console.log(index+1);
+      sessionStorage.setItem("Header-Nm", JSON.stringify(index+1));
+      this.$router.push(this.TabList[index].path)
+      console.log(this.TabList[index].path);
     }
+  }
 };
 </script>
 
 <style>
-
 .footer-ul {
   display: flex;
   border-top: 1px solid #f6f6f6;

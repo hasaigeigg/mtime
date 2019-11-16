@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import loading from '../lib/loading/index';
+import loading from '../lib/loading/index';
 const server = axios.create({
     timeout:5000,
     // baseUrl:"",
@@ -12,7 +12,7 @@ server.interceptors.request.use((config)=>{
         config.params = {...config.data};
     }
 
-    // loading.createLoading(); 
+    loading.createLoading(); 
     return config;
 },(err)=>{
     return Promise.reject(err);
@@ -22,7 +22,7 @@ server.interceptors.request.use((config)=>{
 server.interceptors.response.use((res)=>{
     if(res.status == 200){
 
-        // loading.destroyLoading();
+        loading.destroyLoading();
         return res.data;
     }
 },(err)=>{

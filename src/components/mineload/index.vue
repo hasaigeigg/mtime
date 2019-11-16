@@ -6,7 +6,7 @@
             <span class="iconfont">&#xe697;</span>
           </a>
           <div class="hengxian">
-            <input type="text" placeholder="登录邮箱/手机号码">
+            <input type="text" v-model="user" placeholder="登录邮箱/手机号码">
           </div>
         </li>
         <li>
@@ -14,13 +14,13 @@
             <span class="iconfont">&#xe6a0;</span>
           </a>
            <div>
-            <input type="text" placeholder="密码">
+            <input v-model="password" type="password" placeholder="密码">
             <a class="Mine-mm">显示密码</a>
           </div>
         </li>
       </ul>
       <div class="loading">
-        <span>登陆</span>
+        <v-touch tag="span" @tap="handleMineLoad()">登陆</v-touch>
       </div>
       <div class="logintable">
         <router-link to="/mine/zhuce" tag="a">免费注册</router-link>
@@ -39,8 +39,27 @@
 </template>
 
 <script>
+import {LoginApi} from '@api/login'
 export default {
-    name:"MineLoad"
+    name:"MineLoad",
+    data() {
+      return {
+        user:"",
+        password:""
+      }
+    },
+    methods: {
+      async handleMineLoad(){
+        let data = await LoginApi(this.user,this.password);
+        if(data.data.status == 1){
+          alert("登陆成功");
+          this.$router.push({path:"/mine/user"});
+          sessionStorage.setItem("UserName",JSON.stringify(this.user));
+        }else{
+          alert(data.data.info);
+        }
+      }
+    },
 }
 </script>
 

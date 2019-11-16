@@ -40,7 +40,7 @@
         </a>
       </li>
     </ul>
-     <div class="index_more">查看更多</div>
+     <v-touch tag="div" @tap="handleMorePai()" class="index_more">查看更多</v-touch>
   </div>
 </template>
 
@@ -52,7 +52,8 @@ export default {
   name: "Yu",
   data(){
     return{
-      Paicontent:[]
+      Paicontent:[],
+      Number:1
     }
   },
   computed: {
@@ -63,7 +64,16 @@ export default {
   async created() {
     let data = await findpaicontentApi();
     this.Paicontent = data.topLists;
-  }
+  },
+  methods: {
+    async handleMorePai(){
+      ++this.Number;
+      let content =  await findpaicontentApi(this.Number);
+      for(var i=0; i<content.topLists.length;i++){
+        this.Paicontent.push(content.topLists[i]);
+      }
+    }
+  },
 };
 </script>
 

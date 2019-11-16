@@ -44,12 +44,13 @@ export default {
           path: "/find/findping"
         }
       ],
-      value: 0
+      value: JSON.parse(sessionStorage.getItem("FindValue")) || 0
     };
   },
   methods: {
     handleFindHuan(index) {
       this.value = index;
+      sessionStorage.setItem("FindValue",JSON.stringify(index));
     }
   },
   created() {
@@ -74,6 +75,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .find-nav span {

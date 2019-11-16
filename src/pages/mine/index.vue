@@ -2,7 +2,7 @@
     <section class="index_section">
 
     <div>
-      <HeaderFan icon />
+      <HeaderFan icon v-if="$route.meta.top" />
       <keep-alive>
         <router-view></router-view>
       </keep-alive>

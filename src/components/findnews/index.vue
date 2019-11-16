@@ -1,78 +1,71 @@
 <template>
-  <div class="findnews">
-    <div class="newpic">
-      <a :data-id="NewTitle.newsID">
-        <img :src="NewTitle.imageUrl" alt />
-        <h2>
-          <b>{{NewTitle.title}}</b>
-        </h2>
-      </a>
-    </div>
-    <div class="newlist">
-      <ul>
-        <!-- 三图模板 -->
-        <li v-for="(item,index) in NewContent" :key="index" :class="item.type != 1? 'xiaotu-list':''">
+    <div class="findnews">
+      <div class="newpic">
+        <a :data-id="NewTitle.newsID">
+          <img :src="NewTitle.imageUrl" alt />
+          <h2>
+            <b>{{NewTitle.title}}</b>
+          </h2>
+        </a>
+      </div>
+      <div class="newlist">
+        <ul>
           <!-- 三图模板 -->
-          <div class="santu" v-if="item.type == 1">
-            <h2>
-              <a>{{item.title}}</a>
-            </h2>
-            <div class="picList">
-              <a href v-for="(child,ndx) in item.images" :key="ndx">
-                <img
-                  :src="child.url1"
-                  alt
-                />
-              </a>
-            </div>
+          <li
+            v-for="(item,index) in NewContent"
+            :key="index"
+            :class="item.type != 1? 'xiaotu-list':''"
+          >
+            <!-- 三图模板 -->
+            <div class="santu" v-if="item.type == 1">
+              <h2>
+                <a>{{item.title}}</a>
+              </h2>
+              <div class="picList">
+                <a href v-for="(child,ndx) in item.images" :key="ndx">
+                  <img :src="child.url1" alt />
+                </a>
+              </div>
 
-            <p>
-              <!-- 后期过滤使用 需要过滤事件计算已过去时间 -->
-              <time>{{item.publishTime}}</time>
-              <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
-            </p>
-          </div>
-          <!-- 小图模板 -->
-           <div class="table" v-if="item.type == 0">
-            <div class="table_lists-pic">
-              <img
-                class="img_box"
-                :src="item.image"
-                alt
-              />
-            </div>
-            <div class="table-text">
-              <h2>{{item.title}}</h2>
               <p>
-                <time>13小时前</time>
+                <!-- 后期过滤使用 需要过滤事件计算已过去时间 -->
+                <time>{{item.publishTime | toLastTime()}}</time>
                 <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
               </p>
             </div>
-          </div>
-          <!-- 小图带video -->
-          <div class="table" v-if="item.type == 2">
-            <div class="table_lists-pic">
-              <i class="index-radio"></i>
-              <img
-                class="img_box"
-                :src="item.image"
-                alt
-              />
+            <!-- 小图模板 -->
+            <div class="table" v-if="item.type == 0">
+              <div class="table_lists-pic">
+                <img class="img_box" :src="item.image" alt />
+              </div>
+              <div class="table-text">
+                <h2>{{item.title}}</h2>
+                <p>
+                  <time>{{item.publishTime | toLastTime()}}</time>
+                  <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
+                </p>
+              </div>
             </div>
-            <div class="table-text">
-              <h2>{{item.title}}</h2>
-              <p>
-                <time>15小时前</time>
-                <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
-              </p>
+            <!-- 小图带video -->
+            <div class="table" v-if="item.type == 2">
+              <div class="table_lists-pic">
+                <i class="index-radio"></i>
+                <img class="img_box" :src="item.image" alt />
+              </div>
+              <div class="table-text">
+                <h2>{{item.title}}</h2>
+                <p>
+                  <time>{{item.publishTime | toLastTime()}}</time>
+                  <b v-if="item.commentCount != 0" class="newlist-ping">评论 {{item.commentCount}}</b>
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
+
+      <v-touch tag="div" @tap="handleMoreNews()" class="index_more">查看更多</v-touch>
     </div>
-     <div class="index_more">查看更多</div>
-  </div>
-  
 </template>
 
 <script>
@@ -82,7 +75,8 @@ export default {
   name: "FindNews",
   data() {
     return {
-      NewContent: []
+      NewContent: [],
+      Number: 1
     };
   },
   computed: {
@@ -92,9 +86,18 @@ export default {
   },
   async created() {
     let data = await findnewcontentApi();
-    console.log(data);
     this.NewContent = data.newsList;
-  }
+  },
+  methods: {
+    async handleMoreNews(){
+      ++this.Number;
+      let content = await findnewcontentApi(this.Number);
+      for(var i =0;i<content.newsList.length;i++){
+        this.NewContent.push(content.newsList[i]);
+      }
+      console.log(content);
+    }
+  },
 };
 </script>
 

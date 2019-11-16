@@ -6,14 +6,14 @@ class JSLoading {
         this.loadingVm = new LoadingFn({
             el: document.createElement("div"),
         })
-        this.createLoading();
+        // this.createLoading();
     }
 
     createLoading() {
         document.body.appendChild(this.loadingVm.$mount().$el);
     }
     destroyLoading() {
-        document.body.removeChild(this.loadingVm.$mount().$el);
+        this.loadingVm.$mount().$el.remove();
             
         // this.loadingVm.$mount().$el.parentNode.removeChild(this.loadingVm.$mount().$el);
     }

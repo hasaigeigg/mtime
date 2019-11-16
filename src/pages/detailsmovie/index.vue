@@ -57,7 +57,7 @@
       </div>
       <div class="detail-title">
         <a>
-          <h2>{{MVLtitle}}</h2>
+          <h2>{{MovieXq[Index].title}}</h2>
           <p>
             <b>
               <a v-if="MovieXq[Index].length">{{MovieXq[Index].length}}-</a>
@@ -70,21 +70,12 @@
       <div class="detail-box-qie">
         <div class="detail-data-box">
           <ul>
-            <li class="on">
+            <v-touch tag="li" v-for="(item,index) in Day" :key="index" :class="TimeIndex == index ? 'on':''" @tap="handleTimeDay(index)">
               <a>
-                <span>今天(11月12日)</span>
+                <span>{{item}}({{MVLDay | toDay(index)}})</span>
               </a>
-            </li>
-            <li>
-              <a>
-                <span>明天(11月13日)</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span>后天(11月14日)</span>
-              </a>
-            </li>
+            </v-touch>
+           
           </ul>
         </div>
       </div>
@@ -92,9 +83,9 @@
         <ul>
           <li v-for="(item,index) in MVLshowtime" :key="index">
             <div class="mstime">
-              <time>19:00</time>
+              <time>{{item.startTime | toTime()}} </time>
               <p>
-                <b>21:17散场</b>
+                <b>{{item.showDay | toTime()}}散场</b>
               </p>
             </div>
             <div class="mstype">
@@ -131,7 +122,11 @@ export default {
       Movtitle: [],
       Index: 0,
       MVLtitle: "",
-      MVLshowtime:[]
+      MVLshowtime:[],
+      MVLYtime:"",
+      MVLDay: new Date(),
+      Day:["今天","明天","后天"],
+      TimeIndex:0
     };
   },
   async created() {
@@ -139,15 +134,18 @@ export default {
     this.Movname = data.data.cinema.name;
     this.Movtitle = data.data.cinema.feature;
     this.MovieXq = data.data.movies;
-    this.MVLtitle = data.data.movies[this.Index].title;
+    this.MVLtitle = this.MovieXq.title;
     this.MVLshowtime = data.data.showtimes[0].list;
-    console.log(this.MVLshowtime);
+    console.log(data.data.movies);
   },
   methods: {
     handleTaoMVL(index) {
       this.Index = index;
       let t = this.$refs.Xscroll.querySelectorAll(".XcrollL")[index].offsetLeft;
       this.$refs.scroll.handleScrollToX(-t);
+    },
+    handleTimeDay(index){
+      this.TimeIndex = index;
     }
   }
 };
@@ -261,7 +259,6 @@ export default {
   display: flex;
   left: 0.15rem;
   height: 1.5rem;
-  min-width: 16.667rem;
   left: 1.113rem;
 }
 
@@ -293,6 +290,7 @@ export default {
 }
 
 .scrollpic p {
+  color: #fff;
   width: 0.7rem;
   height: 0.19rem;
   margin-top: 0.05rem;
@@ -369,7 +367,7 @@ export default {
 }
 
 .detail-data-box ul {
-  min-width: 4.25rem;
+  min-width: 3.75rem;
   height: 0.583rem;
   overflow: hidden;
   left: 0;
@@ -385,6 +383,7 @@ export default {
 
 .detail-data-box .on a {
   color: #1e7dd7;
+  font-weight: 800;
 }
 
 .detail-data-box li a {

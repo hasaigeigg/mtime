@@ -81,7 +81,7 @@ export default {
       this.$refs.scroll.handleScrollTo(-t);
     },
     handleCityTo(city){
-      this.$router.push("/home");
+      this.$router.back();
       this.$store.commit("city/handleUpdateCityInfo",city);
     }
   },

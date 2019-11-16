@@ -4,42 +4,65 @@
       <ul>
         <li>
           <div class="textbox">
-            <label>手机号:</label>
-            <input class="phone" type="text" placeholder="请输入手机号" />
-            <a class="btn-blue">
+            <label>账 &nbsp;&nbsp;&nbsp;号:</label>
+            <input v-model="user" class="phone" type="text" placeholder="请输入手机号" />
+            <!-- <a class="btn-blue">
               <span>获取验证码</span>
-            </a>
+            </a> -->
           </div>
         </li>
-        <li>
+        <!-- <li>
           <div class="textbox">
             <label>验证码:</label>
             <input type="text" placeholder />
           </div>
-        </li>
+        </li> -->
         <li>
           <div class="textbox">
             <label>密 &nbsp;&nbsp;&nbsp;码:</label>
-            <input type="text" placeholder="6-20位字母、数字、符号组成" />
+            <input v-model="password" type="password" placeholder="6-20位字母、数字、符号组成" />
           </div>
         </li>
       </ul>
       <div class="agree">
-        <i></i>
+        <v-touch tag="i" @tap="handleZcTy()" :class="sure? 'iconfont sureC': 'iconfont'">&#xe634;</v-touch>
         <label>我已阅读并同意</label>
         <span class="c-green">《Mtime时光网服务条款》</span>
         <span class="c-green">《隐私政策》</span>
       </div>
-      <div class="zhuce">
+      <v-touch tag="div" @tap="handleZhuCe()" class="zhuce">
         <span>注册</span>
-      </div>
+      </v-touch>
     </div>
   </div>
 </template>
 
 <script>
+import {ZhuceApi} from '@api/login'
 export default {
-    name:"minezhuce"
+    name:"minezhuce",
+    data() {
+      return {
+        user:"",
+        password:"",
+        sure: false
+      }
+    },
+    methods: {
+      handleZcTy(){
+        this.sure = !this.sure;
+      },
+      async handleZhuCe(){
+        let data = await ZhuceApi(this.user,this.password);
+        console.log(data);
+        if(data.data.status == 1){
+          alert("注册成功");
+          this.$router.push("/mine/load")
+        }else{
+          alert(data.data.info);
+        }
+      }
+    },
 };
 </script>
 
@@ -106,6 +129,15 @@ export default {
     .agree label {
       color: #777;
       font-size: .133rem;
+    }
+
+    .agree .iconfont {
+      font-size: .167rem;
+      margin-right: .083rem;
+    }
+    
+    .sureC{
+      color: #75ca00;
     }
 
     .c-green {
