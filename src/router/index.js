@@ -7,6 +7,7 @@ import shopmowan from './shopmowan';
 import ticket from './ticket';
 import mine from './mine';
 import Cookies from 'js-cookie'
+import movie from './movie';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,7 @@ const router = new VueRouter({
         shopmowan,
         ticket,
         mine,
+        movie,
         {
             path:'/sou',
             name:'sou',
@@ -66,6 +68,18 @@ const router = new VueRouter({
             meta:{
                 Tab:false
             }
+        },
+        {
+            path:'/moviedetail/:movieId',
+            name:'moviedetail',
+            component:_=>import("@pages/moviedetail"),
+            props:true,
+        },
+        {
+            path:'/moviecomingdetail/:id',
+            name:'moviecomingdetail',
+            component:_=>import("@pages/moviecomingdetail"),
+            props:true,
         },
     ]
 })
