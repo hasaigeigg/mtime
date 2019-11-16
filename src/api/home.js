@@ -14,11 +14,11 @@ export const homereApi = (locationId) => http({
 /**
  * 首页热点接口
  */
-export const homecontentApi = () => http({
+export const homecontentApi = (data = 0,showtime = 0) => http({
     method: "get",
     url: "/article/originalInfoList.api",
     data: {
-
+        time : data - (showtime * 82812)
     }
 })
 

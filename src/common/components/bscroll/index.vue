@@ -49,7 +49,7 @@ export default {
     },
 
     
-    //下来刷新获取数据
+    //下拉刷新获取数据
     handlepullingDown(callback) {
       this.scroll.on("pullingDown", () => {
         callback();
@@ -71,13 +71,16 @@ export default {
             callback();
         })
     },
+
     //当上拉加载更多请求完毕后
     handlefinishPullUp(){
         //重新计算better-scroll
         this.scroll.refresh();
         //当上拉加载更多请求数据后通过better-scroll可以进行下一次得加载了
         this.scroll.finishPullUp();
-
+       setTimeout(()=>{
+          this.flag = false;
+        },3000)
     }
   }
 };
