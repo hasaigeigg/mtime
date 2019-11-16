@@ -89,8 +89,6 @@
     </section>
   </div>
 </template>
-// color:#fff"
-// padding:20px;color:#fff"
 <script>
 import {shoppingdetailApi} from "@api/shopping"
 export default {
@@ -103,7 +101,7 @@ export default {
   },
   methods: {
     handleback() {
-      this.$router.back("/shopping");
+      this.$router.push("/shopping");
     }
   },
   async created(){

@@ -11,12 +11,12 @@
         </router-link>
       </nav>
       <div class="reying">
-        <h2>
+        <router-link tag="h2" to="/movie/hot/">
           <a href="javascript:;">
             <i class="i_next"></i>
             <b>正在热映（{{Reying}}部）</b>
           </a>
-        </h2>
+        </router-link>
         <ul>
           <li v-for="(item,index) in HomeList" :key="index">
             <a>
@@ -102,7 +102,7 @@
 
 <script>
 import { homereApi, homecontentApi, mcApi } from "@api/home";
-import MessageBox from "../../lib/messageBox/index.js";
+// import MessageBox from "../../lib/messageBox/index.js";
 export default {
   name: "Home",
   data() {
@@ -132,13 +132,13 @@ export default {
   created() {
     this.handleGengXinShuJu();
 
-    MessageBox({
-      title:"城市定位",
-      content:this.$store.state.city.n,
-      ok:()=>{
-        alert(1)
-      }
-    });
+    // MessageBox({
+    //   title:"城市定位",
+    //   content:this.$store.state.city.n,
+    //   ok:()=>{
+    //     alert(1)
+    //   }
+    // });
   },
   updated() {
    this.handleGengXinShuJu();

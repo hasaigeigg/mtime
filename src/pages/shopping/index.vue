@@ -13,7 +13,7 @@
     <nav class="shopping_nav">
       <ul>
         <li v-for="(item,index) in navigatorIcon" :key="index">
-          <router-link tag="a" to="/shopmowan">
+          <router-link tag="a"  :to="'/shopmowan?id='+num[index]">
             <img :src="item.image" />
             <p>{{item.iconTitle}}</p>
           </router-link>
@@ -350,11 +350,19 @@ export default {
   data(){
     return {
       navigatorIcon:[],
+      num:[]
     }
   },
   async created(){
     let data = await shoppingApi();
+    console.log(data);
     this.navigatorIcon = data.navigatorIcon;
+    for(var i =0;i<data.navigatorIcon.length;i++){
+      var lian = data.navigatorIcon[i].url.split("=")[1];
+        lian = decodeURIComponent(lian);
+        this.num.push(lian);
+    }
+    console.log(this.num)
   },
 
 };

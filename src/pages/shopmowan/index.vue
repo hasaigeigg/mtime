@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import {shoppingmowanApi} from "@api/shopping"
+import {shoppingmowanApi , shoppingmowanwenziApi,urlnullApi} from "@api/shopping"
 export default {
   name: "Shopmowan",
   methods:{
@@ -75,8 +75,24 @@ export default {
     }
   },
   async created(){
-    let data = await shoppingmowanApi();
+    console.log(this.$route.query.id)
+    if(/\d+/g.test(this.$route.query.id)){
+      console.log(1);
+      let data = await shoppingmowanApi(this.$route.query.id);
     this.goodsList = data.content.goods.goodsList;
+
+    }else if(this.$route.query.id == "undefined"){
+      console.log(3);
+      let data = await urlnullApi();
+    this.goodsList = data.content.goods.goodsList;
+
+    }else{
+      console.log(2);
+
+      let data = await shoppingmowanwenziApi(this.$route.query.id);
+    this.goodsList = data.content.goods.goodsList;
+
+    }
   },
 };
 </script>

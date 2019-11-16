@@ -1,0 +1,30 @@
+export default {
+    path:"/movie",
+    name:"movie",
+    component:_=>import("@pages/movie"),
+    meta:{
+        Mor:true,
+    },
+    children:[
+        {
+            path:"/movie",
+            redirect: "/movie/hot"
+        },
+        {
+            path:"hot",
+            name:"hot",
+            component:_=>import("@components/hot"),
+            meta:{
+                Mor:true,
+            }
+        },
+        {
+            path:"coming",
+            name:"coming",
+            component:_=>import("@components/coming"),
+            meta:{
+                Mor:true,
+            }
+        },
+    ]
+}

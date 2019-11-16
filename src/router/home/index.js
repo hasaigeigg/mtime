@@ -7,5 +7,6 @@ export default {
         requireAuth:false,
         Tab:true,
         Mor:true
-    }
+    },
+    
 }
