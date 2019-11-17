@@ -8,6 +8,9 @@ import ticket from './ticket';
 import mine from './mine';
 import Cookies from 'js-cookie'
 import movie from './movie';
+import homehotnew from './homehotnew';
+import findnewdetail from './findnewdetail'
+import findnewdetailping from './findnewdetailping'
 
 Vue.use(VueRouter);
 
@@ -25,6 +28,9 @@ const router = new VueRouter({
         ticket,
         mine,
         movie,
+        homehotnew,
+        findnewdetail,
+        findnewdetailping,
         {
             path:'/sou',
             name:'sou',

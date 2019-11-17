@@ -12,12 +12,12 @@
           </router-link>
         </nav>
         <div class="reying">
-          <h2>
+          <router-link tag="h2" to="/movie/hot">
             <a href="javascript:;">
               <i class="i_next"></i>
               <b>正在热映（{{Reying}}部）</b>
             </a>
-          </h2>
+          </router-link>
           <ul>
             <li v-for="(item,index) in HomeList" :key="index">
               <a>
@@ -46,7 +46,7 @@
           <div class="b_bj">
             <h2 class="hot">今日热点</h2>
             <ul>
-              <li v-for="(item,index) in HomeRedian" :key="index">
+              <router-link tag="li" :to="'/homehotnew/'+(item.author? item.author: ' ')+'/'+item.publishTime+'/'+item.relatedId" v-for="(item,index) in HomeRedian" :key="index">
                 <!-- 小图模板 -->
                 <div v-if="item.styleType == 1" class="table">
                   <div class="table-pic">
@@ -92,7 +92,7 @@
                     <time>{{item.publishTime | toLastTime()}}</time>
                   </p>
                 </div>
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -103,7 +103,7 @@
 
 <script>
 import { homereApi, homecontentApi, mcApi } from "@api/home";
-// import MessageBox from "../../lib/messageBox/index.js";
+import MessageBox from "../../lib/messageBox/index.js";
 export default {
   name: "Home",
   data() {
@@ -124,6 +124,7 @@ export default {
 
         let content = await homecontentApi();
         this.HomeRedian = content.data.list;
+        console.log(content);
         sessionStorage.setItem(
           "HomeList",
           JSON.stringify(homeList.ms.slice(0, 8))
@@ -151,9 +152,10 @@ export default {
       }
     });
   },
-  updated() {
-    this.handleGengXinShuJu();
-  },
+  //暂时不用 如果报错打开  开启这个有一些弊端 导致首次进入加载两次数据
+  // updated() {
+  //   this.handleGengXinShuJu();
+  // },
   mounted() {
     // this.$refs.Hscroll.handleScroll();  只上拉 不下拉可以不加
     this.$refs.Hscroll.handlepullingUp( async()=>{

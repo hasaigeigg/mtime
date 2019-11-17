@@ -24,8 +24,17 @@ module.exports = {
                 changeOrigin:true
             },
             "/users":{
-                target:"http://localhost:3000"
-            }
+                target:"http://localhost:3000",
+                changeOrigin:true
+            },
+            "/utility":{
+                target:"https://comm-api-m.mtime.cn",
+                changeOrigin:true
+            },
+            "/news":{
+                target:"https://content-api-m.mtime.cn",
+                changeOrigin:true
+            },
             
         }   
     },

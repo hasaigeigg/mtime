@@ -11,7 +11,9 @@
       <div class="newlist">
         <ul>
           <!-- 三图模板 -->
-          <li
+          <router-link 
+            tag="li"
+            :to="'/findnewdetail/'+ item.id"
             v-for="(item,index) in NewContent"
             :key="index"
             :class="item.type != 1? 'xiaotu-list':''"
@@ -60,7 +62,7 @@
                 </p>
               </div>
             </div>
-          </li>
+          </router-link>
         </ul>
       </div>
 
@@ -87,6 +89,7 @@ export default {
   async created() {
     let data = await findnewcontentApi();
     this.NewContent = data.newsList;
+      console.log(this.NewContent);
   },
   methods: {
     async handleMoreNews(){
@@ -95,7 +98,6 @@ export default {
       for(var i =0;i<content.newsList.length;i++){
         this.NewContent.push(content.newsList[i]);
       }
-      console.log(content);
     }
   },
 };

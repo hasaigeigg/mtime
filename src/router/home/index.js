@@ -6,7 +6,8 @@ export default {
         flag:true,
         requireAuth:false,
         Tab:true,
-        Mor:true
+        Mor:true,
     },
+
     
 }

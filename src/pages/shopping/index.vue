@@ -1,15 +1,24 @@
 <template>
-  <div style="background-color:#f6f6f6;">
-    <section class="index_section">
+  <div class="shopping-box" style="background-color:#f6f6f6;">
+  <section class="index_section">
     <article class="shopping_search">
       <div class="shopping_search-1">
         <router-link tag="input" to="/shopsou" type="text" class="shopping_input" placeholder="搜索正版电影周边" /></router-link>
         <a href="#" class="shopping_car"></a>
       </div>
     </article>
+    <div class="shopping-lun-out">
+      <div class="shopping-lunbo-box">
     <article class="shopping_lunbo">
-      <img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F19%2F104138.65713207.jpg" alt />
+      <mt-swipe :auto="4000">
+        <mt-swipe-item> <img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F15%2F175145.40088567.jpg&width=750&height=500&clipType=4" alt /></mt-swipe-item>
+        <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F19%2F104138.65713207.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F07%2F19%2F152249.72244334.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F02%2F111000.90305900.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
+      </mt-swipe>
     </article>
+    </div>
+    </div>
     <nav class="shopping_nav">
       <ul>
         <li v-for="(item,index) in navigatorIcon" :key="index">
@@ -344,6 +353,11 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { Swipe, SwipeItem } from 'mint-ui';
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+import 'mint-ui/lib/style.css';
 import {shoppingApi} from "@api/shopping"
 export default {
   name: "Shopping",
@@ -386,7 +400,10 @@ export default {
   padding: 0 0.05rem 0 0.15rem;
   height: 0.442rem;
 }
-
+.shopping-lun-out{
+  width: 100%;
+  overflow: hidden;
+}
 .shopping_search-1 {
   display: flex;
   justify-content: center;
@@ -426,6 +443,10 @@ export default {
 .shopping_lunbo img {
   width: 100%;
   height: 100%;
+}
+.shopping-lunbo-box{
+  width: 1500px;
+  height: 1.844rem;
 }
 /* nav 导航 */
 .shopping_nav {
@@ -719,4 +740,5 @@ export default {
 .shopping_type .table1 .td1 p strong {
   font-size: 0.133rem;
 }
+
 </style>

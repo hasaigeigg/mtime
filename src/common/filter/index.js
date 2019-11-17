@@ -17,6 +17,18 @@ Vue.filter("toTime",(letterTime)=>{
     return h+m;
 })
 
+//转换时间 传入时间戳得时间 年月日时分
+Vue.filter("toAllTime",(letterTime)=>{
+    let date = new Date(letterTime * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear() + '-';
+    let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    let D = date.getDate() + ' ';
+    let h = date.getHours() + ':';
+    let m = date.getMinutes();
+    m = m<10?"0"+m:m;
+    return Y+M+D+h+m;
+})
+
 //转时间 今天日期
 Vue.filter("toDay",(letterTime,Day)=>{
     let date = new Date(letterTime);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -47,6 +59,7 @@ Vue.filter("toLastTime",(lastTime)=>{
   
     var seconds_of_1year = seconds_of_30days * 12;
 
+    
     var elapsedTime = (new Date().getTime()/1000 - lastTime);
     // console.log(lastTime,new Date().getTime())
     if (elapsedTime < seconds_of_1minute) {
