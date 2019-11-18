@@ -68,9 +68,10 @@ const router = new VueRouter({
             }
         },
         {
-            path:'/cart',
+            path:'/cart/:goodsId',
             name:'cart',
             component:_=>import("@pages/cart"),
+            props:true,
             meta:{
                 Tab:false
             }

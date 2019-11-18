@@ -109,7 +109,7 @@ export default {
     });
     //上拉加载更多
     this.$refs.scroll.handlepullingUp(()=>{
-      console.log("上拉待用");
+      // console.log("上拉待用");
     })
   },
   watch: {

@@ -75,9 +75,7 @@ export default {
   methods: {
     handleTo(index){
       let t = this.$refs.cityListTitle.querySelectorAll(".city-list-title")[index].offsetTop;
-      // console.log(t);
       // this.$refs.cityContainer.scrollTop = t -55;
-      // console.log(this.$refs.cityContainer.scrollTop);
       this.$refs.scroll.handleScrollTo(-t);
     },
     handleCityTo(city){

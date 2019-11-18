@@ -10,26 +10,24 @@
     <section>
       <ul class="carlist">
         <li>
-          <input type="checkbox" class="car_input" />
+          <v-touch tag="input" @tap="handleCartPrice()" type="checkbox" class="car_input" />
           <div class="table_big">
             <h3 class="titlebox">
-              <em class="zy">自营</em>
-              <a>MightyJaxx海绵宝宝系列</a>
+              <em class="zy">{{content.goodsTip}}</em>
+              <a>{{content.jingle}}</a>
             </h3>
             <div class="table">
               <div class="pic">
-                <img
-                  src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fgoods%2F2019%2F10%2F08%2F135733.86814649_600X600X2.jpg"
-                />
+                <img :src="content.image" />
               </div>
               <div class="count">
-                <span>-</span>
-                <input type="text" size="1" value="1" class="pic_input" />
-                <span>+</span>
+                <v-touch tag="span" @tap="handleCartReducer()">-</v-touch>
+                <input type="text" size="1" :value="num" class="pic_input" />
+                <v-touch tag="span" @tap="handleCartAdd()">+</v-touch>
               </div>
               <div class="carprice">
-                <p>￥79</p>
-                <p>x1</p>
+                <p>￥{{content.txnSalePrice / 100}}</p>
+                <p>x{{content.status}}</p>
               </div>
             </div>
           </div>
@@ -39,13 +37,13 @@
     <footer>
       <div class="footer">
         <div class="selectall">
-          <input type="checkbox" />全选
+          <input type="checkbox"  />全选
         </div>
         <div class="heji">
           <span>合计</span>
-          <b>￥:0</b>
+          <b>￥:{{spice}}</b>
         </div>
-        <div class="jiesuan">
+        <div @click="handleCartAdd()" class="jiesuan">
           <span>结算</span>
         </div>
       </div>
@@ -54,15 +52,37 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   name: "cart",
-  methods:{
+  props: ["goodsId"],
+  methods: {
+    ...mapActions({}),
+    ...mapMutations({
+      handleCartReducer: "cart/handleCartReducer",
+      handleCartAdd: "cart/handleCartAdd",
+      handleCartPrice:"cart/handleCartPrice",
       handleback(){
           this.$router.back("/shopdetail");
       }
+    })
+  },
+  created() {
+    this.$store.dispatch("cart/handleCartConent", {
+      id: this.goodsId,
+      city: this.$store.state.city.cityId
+    });
+  },
+  computed: {
+    ...mapState({
+      content: state => state.cart.content,
+      spice: state => state.cart.spice,
+      num: state => state.cart.num
+    })
   }
 };
 </script>
+
 
 <style>
 header {
@@ -181,5 +201,11 @@ footer {
   height: 100%;
   text-align: center;
   line-height: 0.448rem;
+}
+.count span{
+  display: inline-block;
+  font-size: .167rem;
+  width: .417rem;
+  text-align: center;
 }
 </style>

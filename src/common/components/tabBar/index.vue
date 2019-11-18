@@ -48,10 +48,8 @@ export default {
   },
   methods: {
     handleDiTitle(index) {
-      console.log(index+1);
       sessionStorage.setItem("Header-Nm", JSON.stringify(index+1));
       this.$router.push(this.TabList[index].path)
-      console.log(this.TabList[index].path);
     }
   }
 };

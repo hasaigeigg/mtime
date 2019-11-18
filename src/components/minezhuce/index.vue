@@ -55,7 +55,6 @@ export default {
     async handleZhuCe() {
       if (this.sure) {
         let data = await ZhuceApi(this.user, this.password);
-        console.log(data);
         if (data.data.status == 1) {
           alert("注册成功");
           this.$router.push("/mine/load");

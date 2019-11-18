@@ -124,7 +124,6 @@ export default {
 
         let content = await homecontentApi();
         this.HomeRedian = content.data.list;
-        console.log(content);
         sessionStorage.setItem(
           "HomeList",
           JSON.stringify(homeList.ms.slice(0, 8))
@@ -138,7 +137,6 @@ export default {
       let time = parseInt(new Date().getTime() / 1000);
       let MoreHotHome = await homecontentApi(time, this.HNumber);
       this.HomeRedian.push(MoreHotHome.data.list);
-      console.log(MoreHotHome);
     }
   },
   created() {
@@ -165,7 +163,6 @@ export default {
         this.HomeRedian.push(MoreHotHome.data.list[a]);
       }
       
-      console.log(this.HomeRedian);
     })
   },
   watch: {

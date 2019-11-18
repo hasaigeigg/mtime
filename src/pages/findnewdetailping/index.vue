@@ -66,9 +66,7 @@ export default {
     }
   },
   async created() {
-    console.log(this.id);
     let data = await findnewdetailpingApi(this.id);
-    console.log(data);
     this.content = data;
   }
 };

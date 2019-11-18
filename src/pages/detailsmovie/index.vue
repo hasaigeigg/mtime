@@ -136,7 +136,6 @@ export default {
     this.MovieXq = data.data.movies;
     this.MVLtitle = this.MovieXq.title;
     this.MVLshowtime = data.data.showtimes[0].list;
-    console.log(data.data.movies);
   },
   methods: {
     handleTaoMVL(index) {

@@ -54,9 +54,7 @@ export default {
    async created() {
     let data = await findyugaocontentApi();
     this.Yutitle = data.data.trailers.shift(0);
-    console.log(this.Yutitle);
     this.Yucontent = data.data.trailers;
-    console.log(this.Yucontent);
 
   }
 };

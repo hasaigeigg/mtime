@@ -30,7 +30,7 @@
       </div>
       <div v-if="value.length > 0" class="sou-libiao">
         <ul>
-          <li v-for="(item,index) in list" :key="index">
+          <router-link tag="li" :to="'/moviedetail/' + item.id" v-for="(item,index) in list" :key="index">
             <div class="sou-pic">
               <img :src="item.cover" />
             </div>
@@ -46,7 +46,7 @@
                 <span>{{item.movieType}}, {{item.locationName}}</span>
               </dd>
             </dl>
-          </li>
+          </router-link>
         </ul>
       </div>
     </div>
@@ -56,7 +56,6 @@
 <script>
 import {throttle} from '@utils/throttle';
 import {SoumovieApi,SoumoviehotApi} from '@api/sou';
-console.log(throttle);
 export default {
   name: "Sou",
   data(){
@@ -71,8 +70,8 @@ export default {
 
       throttle (async ()=>{
         let data = await SoumovieApi(newVal,this.$store.state.city.cityId);
-        // console.log(111);
         this.list = data.suggestions ? data.suggestions:[];
+
       })
 
       
@@ -81,7 +80,6 @@ export default {
   async created(){
     let data = await SoumoviehotApi();
     this.hotList = data.keywords;
-    console.log(this.hotList)
   }
 };
 </script>

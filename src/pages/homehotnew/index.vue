@@ -60,8 +60,6 @@ export default {
   async created() {
     let data = await homehotnewApi(this.id);
     this.content = data.data.email;
-    console.log(this.content,111);
-    console.log(this.zuozhe,this.id,this.time);
   },
 };
 </script>

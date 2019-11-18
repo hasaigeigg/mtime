@@ -11,7 +11,7 @@
       <div class="shopping-lunbo-box">
     <article class="shopping_lunbo">
       <mt-swipe :auto="4000">
-        <mt-swipe-item> <img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F15%2F175145.40088567.jpg&width=750&height=500&clipType=4" alt /></mt-swipe-item>
+        <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F11%2F15%2F175145.40088567.jpg&width=750&height=500&clipType=4" alt /></mt-swipe-item>
         <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F19%2F104138.65713207.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F07%2F19%2F152249.72244334.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="http://imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F02%2F111000.90305900.jpg&width=750&height=500&clipType=4" alt=""></mt-swipe-item>
@@ -369,14 +369,12 @@ export default {
   },
   async created(){
     let data = await shoppingApi();
-    console.log(data);
     this.navigatorIcon = data.navigatorIcon;
     for(var i =0;i<data.navigatorIcon.length;i++){
       var lian = data.navigatorIcon[i].url.split("=")[1];
         lian = decodeURIComponent(lian);
         this.num.push(lian);
     }
-    console.log(this.num)
   },
 
 };

@@ -52,7 +52,6 @@ export default {
   async created() {
     let data = await findnewdetailApi(this.id);
     this.content = data.data;
-    console.log(this.content);
   }
 };
 </script>

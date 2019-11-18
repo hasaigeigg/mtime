@@ -89,7 +89,6 @@ export default {
   async created() {
     let data = await findnewcontentApi();
     this.NewContent = data.newsList;
-      console.log(this.NewContent);
   },
   methods: {
     async handleMoreNews(){
